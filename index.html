@@ -217,8 +217,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* Hero */
 .hero { padding-block: clamp(12px, 3vw, 40px) clamp(64px, 8vw, 112px); }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; }
-.hero__art { order: -1; display: grid; justify-items: center; }
-.hero__panel { order: 1; justify-self: center; }
+.hero__art { order: -2; display: grid; justify-items: center; }
+.hero__panel { order: -1; justify-self: center; margin-top: -10px; margin-bottom: 8px; }
 .hero__title {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(2.6rem, 1.45rem + 4.6vw, 5.25rem);
@@ -248,7 +248,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   }
   .hero__copy { grid-area: copy; }
   .hero__art { grid-area: art; order: 0; align-self: end; }
-  .hero__panel { grid-area: panel; order: 0; align-self: start; }
+  .hero__panel { grid-area: panel; order: 0; align-self: start; margin: 0; }
 }
 
 /* The drawing */
