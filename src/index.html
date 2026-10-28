@@ -384,20 +384,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .treat__body > * { grid-column: 2; }
 }
 
-/* Results */
-.results__row {
-  display: grid; grid-auto-flow: column; grid-auto-columns: min(78%, 340px); gap: 16px;
-  margin-inline: calc(-1 * var(--gutter)); padding: 0 var(--gutter) 6px;
-  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-}
-.results__row::-webkit-scrollbar { display: none; }
-.result { scroll-snap-align: start; }
-.result img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px; background: var(--mist); }
-.result figcaption { margin-top: 12px; font-size: .9375rem; color: var(--ink-2); }
-@media (min-width: 900px) {
-  .results__row { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-inline: 0; padding: 0; overflow: visible; }
-}
-
 /* About */
 .about__grid { display: grid; gap: 44px; align-items: center; }
 .about__art {
@@ -948,29 +934,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     </div>
   </section>
 
-  <section class="section" id="efekty" aria-labelledby="results-title" style="padding-top:0">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h2" id="results-title">Efekty</h2>
-        <p class="muted">Porównania przed i po zabiegach RF mikroigłowej.</p>
-      </div>
-      <div class="results__row">
-        <figure class="result">
-          <img src="https://instytutbeautyline.pl/wp-content/uploads/2026/10/B07272AF-1AB8-474C-B5C1-B8E1D2EE0917-1024x1024.jpeg" width="1024" height="1024" decoding="async" alt="Twarz przed i po zabiegu RF mikroigłowej: lepsze napięcie skóry i wyraźniejszy owal">
-          <figcaption>Napięcie skóry i owal twarzy</figcaption>
-        </figure>
-        <figure class="result">
-          <img src="https://instytutbeautyline.pl/wp-content/uploads/2026/10/32B948F5-60AD-4491-B40E-341162C05E11-1024x1024.jpeg" width="1024" height="1024" decoding="async" alt="Twarz przed i po zabiegu RF mikroigłowej: jędrniejsza skóra lepszej jakości">
-          <figcaption>Jędrność i jakość skóry</figcaption>
-        </figure>
-        <figure class="result">
-          <img src="https://instytutbeautyline.pl/wp-content/uploads/2026/10/1C02B236-D9EC-460F-AA5E-9FC7642B6AA5-1024x1024.jpeg" width="1024" height="1024" decoding="async" alt="Czoło przed i po zabiegu RF mikroigłowej: wygładzona struktura skóry">
-          <figcaption>Struktura skóry czoła</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="o-nas" aria-labelledby="about-title" style="padding-top:0">
     <div class="container about__grid">
       <div class="about__art">
@@ -1343,22 +1306,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     }
   });
 
-  /* Before/after photos: hide what does not load */
-  var results = document.getElementById('efekty');
-  if (results) {
-    var imgs = results.querySelectorAll('img');
-    var failed = 0;
-    imgs.forEach(function (img) {
-      function fail() {
-        var fig = img.closest('figure');
-        if (fig) fig.remove();
-        failed += 1;
-        if (failed === imgs.length) results.remove();
-      }
-      if (img.complete && img.naturalWidth === 0) fail();
-      else img.addEventListener('error', fail, { once: true });
-    });
-  }
 
   /* Opening hours, in Poznań time */
   var HOURS = { 0: null, 1: [720, 1080], 2: [540, 1200], 3: [540, 1200], 4: [540, 1200], 5: [540, 1200], 6: [540, 840] };
